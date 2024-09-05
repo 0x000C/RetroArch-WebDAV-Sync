@@ -1,0 +1,26 @@
+# Ignore everything by default
+*
+
+# Make sure that .env does not get uploaded
+.env
+
+# Whitelist important directories and files
+!/.gitignore
+!/docker-compose.yml
+
+# Whitelist config directory and specific file
+!/config/
+!/config/tailscale/
+!/config/tailscale/rclone.json
+
+# Whitelist data directory and specific files
+!/data/
+!/data/rclone/
+!/data/rclone/health
+!/data/tailscale/
+
+# Ignore everything else inside the data directories
+data/rclone/*
+!data/rclone/health
+
+data/tailscale/*

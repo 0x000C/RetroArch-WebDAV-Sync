@@ -1,0 +1,35 @@
+services:
+  rclone:
+    image: "rclone/rclone:latest"
+    container_name: "${CONTAINER_NAME}-rclone"
+    restart: "${RESTART_POLICY}"
+    command: "serve webdav --addr :80 /data"
+    volumes:
+      - "./data/rclone:/data"
+    network_mode: service:tailscale
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -q --spider http://127.0.0.1:80/health || exit 1"]
+      interval: "30s"
+      timeout: "10s"
+      retries: "5"
+
+  tailscale:
+    image: "tailscale/tailscale:latest"
+    container_name: "${CONTAINER_NAME}-tailscale"
+    restart: "${RESTART_POLICY}"
+    volumes:
+      - "./data/tailscale:/var/lib/tailscale"
+      - "./config/tailscale:/config"
+    environment:
+      - "TS_HOSTNAME=${CONTAINER_NAME}"
+      - "TS_AUTHKEY=${TS_AUTHKEY}"
+      - "TS_AUTH_ONCE=True"
+      - "TS_STATE_DIR=/var/lib/tailscale"
+      - "TS_SERVE_CONFIG=/config/rclone.json"
+      - "TS_USERSPACE=True"
+      - "TS_HEALTHCHECK_ADDR_PORT=127.0.0.1:8085"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -q --spider http://127.0.0.1:8085/healthz || exit 1"]
+      interval: "30s"
+      timeout: "10s"
+      retries: "5"
