@@ -67,7 +67,7 @@ Restart RetroArch and it will set up the necessary directories on the server.
 
 Repeat these steps on any other devices you want to sync with.
 
-## Data Locations
+## Data Directories
 
 The WebDAV server saves files on the server in the `data/rclone` directory.
 
