@@ -53,11 +53,12 @@ sudo docker compose logs -f
 
 ### 5. Update RetroArch Configuration
 
-In RetroArch, go to Settings->Saving set:
+In RetroArch, go to Settings->Saving->Cloud Sync set:
 
-* Cloud Sync to `ON`
+* Enable Cloud Sync to `ON`
 * Cloud Sync Backend to `webdav`
 * Cloud Storage URL to your WebDAV server URL (e.g. `https://CONTAINER_NAME.auto-generated.ts.net/`) or Tailscale IP address (e.g. `100.xxx.xxx.xxx`). You can find these addresses on your [Tailscale Admin Console](https://login.tailscale.com/admin/machines).
+* Leave Username and Password blank
 
 Restart RetroArch and it will set up the necessary directories on the server.
 
