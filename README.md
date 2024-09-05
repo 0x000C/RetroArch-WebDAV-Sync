@@ -50,14 +50,17 @@ Run the following commands to start the WebDAV server and Tailscale services and
 sudo docker compose up -d
 sudo docker compose logs -f
 ```
+### 5. Open WebDAV Server
 
-### 5. Update RetroArch Configuration
+Confirm that the WebDAV server is running, and allow Tailscale to generate HTTPS certificates by navigating to your WebDAV server URL (e.g. `https://CONTAINER_NAME.auto-generated.ts.net/`) or Tailscale IP address (e.g. `100.xxx.xxx.xxx`). You can find these addresses on your [Tailscale Admin Console](https://login.tailscale.com/admin/machines).
+
+### 6. Update RetroArch Configuration
 
 In RetroArch, go to Settings->Saving->Cloud Sync set:
 
 * Enable Cloud Sync to `ON`
 * Cloud Sync Backend to `webdav`
-* Cloud Storage URL to your WebDAV server URL (e.g. `https://CONTAINER_NAME.auto-generated.ts.net/`) or Tailscale IP address (e.g. `100.xxx.xxx.xxx`). You can find these addresses on your [Tailscale Admin Console](https://login.tailscale.com/admin/machines).
+* Cloud Storage URL to your WebDAV server URL.
 * Leave Username and Password blank
 
 Restart RetroArch and it will set up the necessary directories on the server.
