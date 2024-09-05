@@ -52,7 +52,7 @@ sudo docker compose logs -f
 ```
 ### 5. Open WebDAV Server
 
-Confirm that the WebDAV server is running, and allow Tailscale to generate HTTPS certificates by navigating to your WebDAV server URL (e.g. `https://CONTAINER_NAME.auto-generated.ts.net/`) or Tailscale IP address (e.g. `100.xxx.xxx.xxx`). You can find these addresses on your [Tailscale Admin Console](https://login.tailscale.com/admin/machines).
+Confirm that the WebDAV server is running and allow Tailscale to generate HTTPS certificates by navigating to your WebDAV server URL (e.g. `https://CONTAINER_NAME.auto-generated.ts.net/`) or Tailscale IP address (e.g. `100.xxx.xxx.xxx`). You can find these addresses on your [Tailscale Admin Console](https://login.tailscale.com/admin/machines).
 
 ### 6. Update RetroArch Configuration
 
@@ -66,6 +66,10 @@ In RetroArch, go to Settings->Saving->Cloud Sync set:
 Restart RetroArch and it will set up the necessary directories on the server.
 
 Repeat these steps on any other devices you want to sync with.
+
+## Data Locations
+
+The WebDAV server saves files on the server in the `data/rclone` directory.
 
 ## Future Features
 
