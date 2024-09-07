@@ -3,7 +3,7 @@ services:
     image: "rclone/rclone:latest"
     container_name: "${CONTAINER_NAME}-rclone"
     restart: "${RESTART_POLICY}"
-    command: "serve webdav --addr :80 /data"
+    command: "serve webdav --addr 127.0.0.1:80 /data"
     volumes:
       - "./data/rclone:/data"
     network_mode: service:tailscale
